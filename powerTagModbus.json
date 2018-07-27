@@ -147,8 +147,8 @@
         "info": "",
         "in": [
             {
-                "x": 338,
-                "y": 425,
+                "x": 49,
+                "y": 362,
                 "wires": [
                     {
                         "id": "45218e6e.82871"
@@ -157,7 +157,7 @@
                         "id": "81e11419.7bbd1"
                     },
                     {
-                        "id": "bdfe4e66.a1a188"
+                        "id": "3cf51133.6d423e"
                     }
                 ]
             }
@@ -288,10 +288,49 @@
         "out": []
     },
     {
+        "id": "b4a92fc9.23391",
+        "type": "subflow",
+        "name": "Modbus",
+        "info": "",
+        "in": [
+            {
+                "x": 40,
+                "y": 200,
+                "wires": [
+                    {
+                        "id": "6355cbbf.fde93c"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 460,
+                "y": 180,
+                "wires": [
+                    {
+                        "id": "6355cbbf.fde93c",
+                        "port": 0
+                    }
+                ]
+            },
+            {
+                "x": 460,
+                "y": 240,
+                "wires": [
+                    {
+                        "id": "6355cbbf.fde93c",
+                        "port": 1
+                    }
+                ]
+            }
+        ]
+    },
+    {
         "id": "daaa2fc.a91195",
         "type": "ui_base",
         "theme": {
-            "name": "theme-custom",
+            "name": "theme-light",
             "lightTheme": {
                 "default": "#0094CE",
                 "baseColor": "#0094CE",
@@ -314,44 +353,44 @@
             },
             "themeState": {
                 "base-color": {
-                    "default": "#4B7930",
-                    "value": "#4B7930",
+                    "default": "#0094CE",
+                    "value": "#0094CE",
                     "edited": false
                 },
                 "page-titlebar-backgroundColor": {
-                    "value": "#4B7930",
+                    "value": "#0094CE",
                     "edited": false
                 },
                 "page-backgroundColor": {
-                    "value": "#111111",
+                    "value": "#fafafa",
                     "edited": false
                 },
                 "page-sidebar-backgroundColor": {
-                    "value": "#000000",
+                    "value": "#ffffff",
                     "edited": false
                 },
                 "group-textColor": {
-                    "value": "#6db046",
+                    "value": "#1bbfff",
                     "edited": false
                 },
                 "group-borderColor": {
-                    "value": "#555555",
+                    "value": "#ffffff",
                     "edited": false
                 },
                 "group-backgroundColor": {
-                    "value": "#333333",
+                    "value": "#ffffff",
                     "edited": false
                 },
                 "widget-textColor": {
-                    "value": "#eeeeee",
+                    "value": "#111111",
                     "edited": false
                 },
                 "widget-backgroundColor": {
-                    "value": "#4b7930",
+                    "value": "#0094ce",
                     "edited": false
                 },
                 "widget-borderColor": {
-                    "value": "#333333",
+                    "value": "#ffffff",
                     "edited": false
                 },
                 "base-font": {
@@ -404,11 +443,12 @@
         "id": "6aca3800.2dec38",
         "type": "ui_group",
         "z": "",
-        "name": "Energy",
+        "name": "Mains and Generation",
         "tab": "5f899b56.de6e24",
+        "order": 1,
         "disp": true,
         "width": "8",
-        "collapse": false
+        "collapse": true
     },
     {
         "id": "d6b47ff4.8c01b8",
@@ -446,99 +486,64 @@
         "name": ""
     },
     {
-        "id": "397f47fe.c5857",
-        "type": "catch",
-        "z": "4f076291.cde374",
-        "name": "",
-        "scope": null,
-        "x": 100,
-        "y": 120,
-        "wires": [
-            [
-                "af7b870a.be0008"
-            ]
-        ]
+        "id": "52746128.09121",
+        "type": "persist-store",
+        "z": "d3f434eb.c97258",
+        "filename": "persistanceGraph.json",
+        "interval": "600"
     },
     {
-        "id": "af7b870a.be0008",
-        "type": "debug",
-        "z": "4f076291.cde374",
-        "name": "",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "complete": "false",
-        "x": 270,
-        "y": 120,
-        "wires": []
+        "id": "7b4beee9.c0112",
+        "type": "ui_group",
+        "z": "",
+        "name": "Sub Circuits",
+        "tab": "5f899b56.de6e24",
+        "order": 2,
+        "disp": true,
+        "width": "8",
+        "collapse": true
     },
     {
-        "id": "d4be1113.dbca",
-        "type": "modbus-flex-getter",
-        "z": "4f076291.cde374",
-        "name": "",
-        "showStatusActivities": true,
-        "showErrors": false,
-        "server": "a9247b5b.e2b8",
-        "useIOFile": false,
-        "ioFile": "",
-        "useIOForPayload": false,
-        "x": 831,
-        "y": 580,
-        "wires": [
-            [],
-            [
-                "b2ab1e6b.9c925",
-                "f18ff91a.62a038"
-            ]
-        ]
+        "id": "3eec941a.629fb4",
+        "type": "ui_group",
+        "z": "d3f434eb.c97258",
+        "name": "Gauges",
+        "tab": "5f899b56.de6e24",
+        "disp": true,
+        "width": "8",
+        "collapse": true
     },
     {
-        "id": "ed3fd2b7.f38738",
-        "type": "modbus-queue-info",
-        "z": "4f076291.cde374",
-        "name": "Queue Info Read",
-        "topic": "",
-        "unitid": "150",
-        "lowLowLevel": 25,
-        "lowLevel": 75,
-        "highLevel": 150,
-        "highHighLevel": 300,
-        "server": "a9247b5b.e2b8",
-        "errorOnHighLevel": false,
-        "x": 776,
-        "y": 867,
-        "wires": [
-            [
-                "b3c91edb.f82dd8"
-            ]
-        ]
-    },
-    {
-        "id": "738f1cc2.51d024",
-        "type": "modbus-queue-info",
-        "z": "4f076291.cde374",
-        "name": "Queue Info Write",
-        "topic": "",
-        "unitid": "",
-        "lowLowLevel": 25,
-        "lowLevel": 75,
-        "highLevel": 150,
-        "highHighLevel": 300,
-        "server": "a9247b5b.e2b8",
-        "errorOnHighLevel": false,
-        "x": 779,
-        "y": 811,
-        "wires": [
-            []
-        ]
+        "id": "b8ea1246.8152d8",
+        "type": "mqtt-broker",
+        "z": "",
+        "name": "lola",
+        "broker": "192.168.1.10",
+        "port": "1883",
+        "clientid": "PT",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": ""
     },
     {
         "id": "239b90c4.44091",
         "type": "function",
         "z": "50abf9bc.962e5",
         "name": "Current",
-        "func": "msg.payload = { \n    value: msg.payload,\n    fc: 3,\n    unitid: msg.payload.unitid,\n    address: 2999,\n    quantity: 2,\n};\nmsg.ptTopic = \"current\"\nmsg.dataType = \"float32\"\nreturn msg;",
+        "func": "msg.payload = { \n    value: msg.payload,\n    fc: 3,\n    unitid: msg.payload.unitid,\n    address: 2999,\n    quantity: 2,\n    units: \"amps\"\n};\nmsg.ptTopic = \"current\"\nmsg.dataType = \"float32\"\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "x": 900,
@@ -552,7 +557,7 @@
         "type": "function",
         "z": "50abf9bc.962e5",
         "name": "Voltage",
-        "func": "msg.payload = { \n    value: msg.payload,\n    fc: 3,\n    unitid: msg.payload.unitid,\n    address: 3027,\n    quantity: 2 \n};\nmsg.ptTopic = \"voltage\"\nmsg.dataType = \"float32\"\nreturn msg;",
+        "func": "msg.payload = { \n    value: msg.payload,\n    fc: 3,\n    unitid: msg.payload.unitid,\n    address: 3027,\n    quantity: 2,\n    units: \"volts\"\n};\nmsg.ptTopic = \"voltage\"\nmsg.dataType = \"float32\"\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "x": 900,
@@ -566,7 +571,7 @@
         "type": "function",
         "z": "bba877fb.9b0b",
         "name": "Unit ID 150",
-        "func": "var phase = context.get('phase') || 3;\n\nmsg.payload = { \n    value: msg.payload,\n    unitid: 150\n};\n\nif (msg.phaseSelect === true) {\n   context.set('phase',3);\n}\nif (msg.phaseSelect === false){\n   context.set('phase',1);\n}\nmsg.phase = phase;\nreturn msg;",
+        "func": "var phase = context.get('phase') || 3;\n\nmsg.payload = { \n    value: msg.payload,\n    unitid: 150\n};\n\nif (msg.phaseSelect === true) {\n   context.set('phase',3);\n}\nif (msg.phaseSelect === false){\n   context.set('phase',1);\n}\nmsg.phase = phase;\nmsg.name = \"Mains\";\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "x": 576,
@@ -575,7 +580,8 @@
             [
                 "ff60e35.2c5fda",
                 "ed09ee4f.12f118",
-                "a97999f0.cca098"
+                "a97999f0.cca098",
+                "b7725f9a.7a1de8"
             ]
         ]
     },
@@ -584,7 +590,7 @@
         "type": "function",
         "z": "bba877fb.9b0b",
         "name": "Unit ID 155",
-        "func": "var phase = context.get('phase') || 3;\n\nmsg.payload = { \n    value: msg.payload,\n    unitid: 155\n};\n\nif (msg.phaseSelect === true) {\n   context.set('phase',3);\n}\nif (msg.phaseSelect === false){\n   context.set('phase',1);\n}\nmsg.phase = phase;\nreturn msg;",
+        "func": "var phase = context.get('phase') || 3;\n\nmsg.payload = { \n    value: msg.payload,\n    unitid: 155,\n    name: \"Laundry\"\n};\n\nif (msg.phaseSelect === true) {\n   context.set('phase',3);\n}\nif (msg.phaseSelect === false){\n   context.set('phase',1);\n}\nmsg.phase = phase;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "x": 575,
@@ -626,8 +632,8 @@
         "type": "subflow:bba877fb.9b0b",
         "z": "4f076291.cde374",
         "name": "",
-        "x": 330.5,
-        "y": 577,
+        "x": 310,
+        "y": 100,
         "wires": [
             [
                 "3121ee1f.cd09ca"
@@ -646,7 +652,7 @@
         "type": "function",
         "z": "50abf9bc.962e5",
         "name": "Active Power",
-        "func": "msg.payload = { \n    value: msg.payload,\n    fc: 3,\n    unitid: msg.payload.unitid,\n    address: 3053,\n    quantity: 2 \n};\nmsg.ptTopic = \"activePower\"\nmsg.dataType = \"float32\"\nreturn msg;",
+        "func": "msg.payload = { \n    value: msg.payload,\n    fc: 3,\n    unitid: msg.payload.unitid,\n    address: 3053,\n    quantity: 2,\n    units: \"watts\"\n};\nmsg.ptTopic = \"activePower\"\nmsg.dataType = \"float32\"\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "x": 910,
@@ -660,7 +666,7 @@
         "type": "function",
         "z": "50abf9bc.962e5",
         "name": "Total Active Energy",
-        "func": "msg.payload = { \n    value: msg.payload,\n    fc: 3,\n    unitid: msg.payload.unitid,\n    address: 3203,\n    quantity: 4 \n};\nmsg.ptTopic = \"totalActiveEnergy\"\nmsg.dataType = \"int64\"\nreturn msg;",
+        "func": "msg.payload = { \n    value: msg.payload,\n    fc: 3,\n    unitid: msg.payload.unitid,\n    address: 3203,\n    quantity: 4,\n    units: \"kWh\"\n};\nmsg.ptTopic = \"totalActiveEnergy\"\nmsg.dataType = \"int64\"\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "x": 930,
@@ -674,7 +680,7 @@
         "type": "function",
         "z": "bba877fb.9b0b",
         "name": "Unit ID 151",
-        "func": "var phase = context.get('phase') || 3;\n\nmsg.payload = { \n    value: msg.payload,\n    unitid: 151\n};\n\nif (msg.phaseSelect === true) {\n   context.set('phase',3);\n}\nif (msg.phaseSelect === false){\n   context.set('phase',1);\n}\nmsg.phase = phase;\nreturn msg;",
+        "func": "var phase = context.get('phase') || 3;\n\nmsg.payload = { \n    value: msg.payload,\n    unitid: 151\n};\n\nif (msg.phaseSelect === true) {\n   context.set('phase',3);\n}\nif (msg.phaseSelect === false){\n   context.set('phase',1);\n}\nmsg.phase = phase;\nmsg.name = \"Solar\";\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "x": 576,
@@ -692,7 +698,7 @@
         "type": "function",
         "z": "bba877fb.9b0b",
         "name": "Unit ID 152",
-        "func": "var phase = context.get('phase') || 3;\n\nmsg.payload = { \n    value: msg.payload,\n    unitid: 152\n};\n\nif (msg.phaseSelect === true) {\n   context.set('phase',3);\n}\nif (msg.phaseSelect === false){\n   context.set('phase',1);\n}\nmsg.phase = phase;\nreturn msg;",
+        "func": "var phase = context.get('phase') || 3;\n\nmsg.payload = { \n    value: msg.payload,\n    unitid: 152\n};\n\nif (msg.phaseSelect === true) {\n   context.set('phase',3);\n}\nif (msg.phaseSelect === false){\n   context.set('phase',1);\n}\nmsg.phase = phase;\nmsg.name = \"Stove\";\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "x": 576,
@@ -710,7 +716,7 @@
         "type": "function",
         "z": "bba877fb.9b0b",
         "name": "Unit ID 153",
-        "func": "var phase = context.get('phase') || 3;\n\nmsg.payload = { \n    value: msg.payload,\n    unitid: 153\n};\n\nif (msg.phaseSelect === true) {\n   context.set('phase',3);\n}\nif (msg.phaseSelect === false){\n   context.set('phase',1);\n}\nmsg.phase = phase;\nreturn msg;",
+        "func": "var phase = context.get('phase') || 3;\n\nmsg.payload = { \n    value: msg.payload,\n    unitid: 153,\n    name: \"Shit Farm\"\n};\n\nif (msg.phaseSelect === true) {\n   context.set('phase',3);\n}\nif (msg.phaseSelect === false){\n   context.set('phase',1);\n}\nmsg.phase = phase;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "x": 577,
@@ -728,7 +734,7 @@
         "type": "function",
         "z": "bba877fb.9b0b",
         "name": "Unit ID 154",
-        "func": "var phase = context.get('phase')\n\nmsg.payload = { \n    value: msg.payload,\n    unitid: 154\n};\n\nif (msg.phaseSelect === true) {\n   context.set('phase',3);\n}\nif (msg.phaseSelect === false){\n   context.set('phase',1);\n}\nmsg.phase = phase;\nreturn msg;",
+        "func": "var phase = context.get('phase')\n\nmsg.payload = { \n    value: msg.payload,\n    unitid: 154,\n    name: \"Lights\"\n};\n\nif (msg.phaseSelect === true) {\n   context.set('phase',3);\n}\nif (msg.phaseSelect === false){\n   context.set('phase',1);\n}\nmsg.phase = phase;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "x": 576,
@@ -746,7 +752,7 @@
         "type": "function",
         "z": "bba877fb.9b0b",
         "name": "Unit ID 156",
-        "func": "var phase = context.get('phase') || 3;\n\nmsg.payload = { \n    value: msg.payload,\n    unitid: 156\n};\n\nif (msg.phaseSelect === true) {\n   context.set('phase',3);\n}\nif (msg.phaseSelect === false){\n   context.set('phase',1);\n}\nmsg.phase = phase;\nreturn msg;",
+        "func": "var phase = context.get('phase') || 3;\n\nmsg.payload = { \n    value: msg.payload,\n    unitid: 156,\n    name: \"Living Room Air Con\"\n};\n\nif (msg.phaseSelect === true) {\n   context.set('phase',3);\n}\nif (msg.phaseSelect === false){\n   context.set('phase',1);\n}\nmsg.phase = phase;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "x": 575,
@@ -764,7 +770,7 @@
         "type": "function",
         "z": "bba877fb.9b0b",
         "name": "Unit ID 157",
-        "func": "var phase = context.get('phase') || 3;\n\nmsg.payload = { \n    value: msg.payload,\n    unitid: 157\n};\n\nif (msg.phaseSelect === true) {\n   context.set('phase',3);\n}\nif (msg.phaseSelect === false){\n   context.set('phase',1);\n}\nmsg.phase = phase;\nreturn msg;",
+        "func": "var phase = context.get('phase') || 3;\n\nmsg.payload = { \n    value: msg.payload,\n    unitid: 157,\n    name: \"Upstairs\"\n};\n\nif (msg.phaseSelect === true) {\n   context.set('phase',3);\n}\nif (msg.phaseSelect === false){\n   context.set('phase',1);\n}\nmsg.phase = phase;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "x": 576,
@@ -782,7 +788,7 @@
         "type": "function",
         "z": "bba877fb.9b0b",
         "name": "Unit ID 158",
-        "func": "var phase = context.get('phase') || 3;\n\nmsg.payload = { \n    value: msg.payload,\n    unitid: 158\n};\n\nif (msg.phaseSelect === true) {\n   context.set('phase',3);\n}\nif (msg.phaseSelect === false){\n   context.set('phase',1);\n}\nmsg.phase = phase;\nreturn msg;",
+        "func": "var phase = context.get('phase') || 3;\n\nmsg.payload = { \n    value: msg.payload,\n    unitid: 158,\n    name: \"Kitchen\"\n};\n\nif (msg.phaseSelect === true) {\n   context.set('phase',3);\n}\nif (msg.phaseSelect === false){\n   context.set('phase',1);\n}\nmsg.phase = phase;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "x": 574,
@@ -800,7 +806,7 @@
         "type": "function",
         "z": "bba877fb.9b0b",
         "name": "Unit ID 159",
-        "func": "var phase = context.get('phase')\n\nmsg.payload = { \n    value: msg.payload,\n    unitid: 159\n};\n\nif (msg.phaseSelect === true) {\n   context.set('phase',3);\n}\nif (msg.phaseSelect === false){\n   context.set('phase',1);\n}\nmsg.phase = phase;\nreturn msg;",
+        "func": "var phase = context.get('phase')\n\nmsg.payload = { \n    value: msg.payload,\n    unitid: 159,\n    name: \"Hot Water\"\n};\n\nif (msg.phaseSelect === true) {\n   context.set('phase',3);\n}\nif (msg.phaseSelect === false){\n   context.set('phase',1);\n}\nmsg.phase = phase;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "x": 575,
@@ -1009,7 +1015,7 @@
         "type": "function",
         "z": "50abf9bc.962e5",
         "name": "Partial Active Energy",
-        "func": "msg.payload = { \n    value: msg.payload,\n    fc: 3,\n    unitid: msg.payload.unitid,\n    address: 3255,\n    quantity: 4 \n};\nmsg.ptTopic = \"partialActiveEnergy\"\nmsg.dataType = \"int64\"\nreturn msg;",
+        "func": "msg.payload = { \n    value: msg.payload,\n    fc: 3,\n    unitid: msg.payload.unitid,\n    address: 3255,\n    quantity: 4,\n    units: \"kWh\"\n};\nmsg.ptTopic = \"partialActiveEnergy\"\nmsg.dataType = \"int64\"\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "x": 940,
@@ -1023,7 +1029,7 @@
         "type": "function",
         "z": "50abf9bc.962e5",
         "name": "Total Active Power",
-        "func": "msg.payload = { \n    value: msg.payload,\n    fc: 3,\n    unitid: msg.payload.unitid,\n    address: 3059,\n    quantity: 2 \n};\nmsg.ptTopic = \"totalActivePower\"\nmsg.dataType = \"float32\"\nreturn msg;",
+        "func": "msg.payload = { \n    value: msg.payload,\n    fc: 3,\n    unitid: msg.payload.unitid,\n    address: 3059,\n    quantity: 2,\n    units: \"watts\"\n};\nmsg.ptTopic = \"totalActivePower\"\nmsg.dataType = \"float32\"\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "x": 930,
@@ -1065,60 +1071,11 @@
         "type": "function",
         "z": "50abf9bc.962e5",
         "name": "Load Run Hour Counter",
-        "func": "msg.payload = { \n    value: msg.payload,\n    fc: 3,\n    unitid: msg.payload.unitid,\n    address: 3307,\n    quantity: 2 \n};\nmsg.ptTopic = \"loadRunHourCounter\"\nmsg.dataType = \"uint32\"\nreturn msg;",
+        "func": "msg.payload = { \n    value: msg.payload,\n    fc: 3,\n    unitid: msg.payload.unitid,\n    address: 3307,\n    quantity: 2,\n    units: \"hours\"\n};\nmsg.ptTopic = \"loadRunHourCounter\"\nmsg.dataType = \"uint32\"\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "x": 950,
         "y": 560,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "b3c91edb.f82dd8",
-        "type": "debug",
-        "z": "4f076291.cde374",
-        "name": "",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "x": 1132.5,
-        "y": 908,
-        "wires": []
-    },
-    {
-        "id": "8ff3fce9.a4c378",
-        "type": "modbus-queue-info",
-        "z": "4f076291.cde374",
-        "name": "Queue Info Read",
-        "topic": "",
-        "unitid": "159",
-        "lowLowLevel": 25,
-        "lowLevel": 75,
-        "highLevel": 150,
-        "highHighLevel": 300,
-        "server": "a9247b5b.e2b8",
-        "errorOnHighLevel": false,
-        "x": 776,
-        "y": 935,
-        "wires": [
-            [
-                "b3c91edb.f82dd8"
-            ]
-        ]
-    },
-    {
-        "id": "62693208.f6f694",
-        "type": "function",
-        "z": "4f076291.cde374",
-        "name": "useful code",
-        "func": "\nmsg.nodetype = \"inject\"\nmsg.injectType = \"write\"\n\nif(msg.payload.L1) {\n    msg.addressSpaceItems = [\n        {nodeId: 'ns=5;s=L1Voltage', datatypeName: 'Float'}, \n        {nodeId: 'ns=5;s=L1Power', datatypeName: 'Float'}, \n        {nodeId: 'ns=5;s=L1Demand', datatypeName: 'Float'},\n        {nodeId: 'ns=5;s=L2Voltage', datatypeName: 'Float'}, \n        {nodeId: 'ns=5;s=L2Power', datatypeName: 'Float'}, \n        {nodeId: 'ns=5;s=L2Demand', datatypeName: 'Float'},\n        {nodeId: 'ns=5;s=L3Voltage', datatypeName: 'Float'}, \n        {nodeId: 'ns=5;s=L3Power', datatypeName: 'Float'}, \n        {nodeId: 'ns=5;s=L3Demand', datatypeName: 'Float'}        \n    ]\n    \n    msg.valuesToWrite = [\n        msg.payload.L1.voltage, \n        msg.payload.L1.power, \n        msg.payload.L1.demand,\n        msg.payload.L2.voltage, \n        msg.payload.L2.power, \n        msg.payload.L2.demand,\n        msg.payload.L3.voltage, \n        msg.payload.L3.power, \n        msg.payload.L3.demand\n    ]\n    \n    return msg;\n}\n\nif(msg.payload.demandSum) {\n    msg.addressSpaceItems = [\n        {nodeId: 'ns=5;s=DemandSum', datatypeName: 'Float'}, \n        {nodeId: 'ns=5;s=PowerSum', datatypeName: 'Float'}\n    ]\n    \n    msg.valuesToWrite = [\n        msg.payload.demandSum, \n        msg.payload.powerSum\n    ]\n    \n    return msg;\n}\n",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 270,
-        "y": 351,
         "wires": [
             []
         ]
@@ -1162,29 +1119,19 @@
         ]
     },
     {
-        "id": "cabb9301.82856",
-        "type": "subflow:906c18a6.5e881",
-        "z": "4f076291.cde374",
-        "name": "",
-        "x": 655.5,
-        "y": 106,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "b2ab1e6b.9c925",
         "type": "function",
         "z": "4f076291.cde374",
         "name": "extract buffer data",
-        "func": "if (msg.dataType === \"uint32\") {\n        var floatValue = ((msg.payload.buffer.readUInt32BE(0,4)) /3600).toFixed(2);\n}\n\nif (msg.dataType === \"float32\") {\n   var floatValue = msg.payload.buffer.readFloatBE(0,4).toFixed(2);\n}\n\n\nmsg.topic = msg.input.queueUnitId;\n\nmsg.payload = floatValue\n\nreturn msg",
+        "func": "if (msg.dataType === \"uint32\") {\n        var floatValue = ((msg.payload.buffer.readUInt32BE(0,4))).toFixed(2);\n}\n\nif (msg.dataType === \"float32\") {\n   var floatValue = msg.payload.buffer.readFloatBE(0,4).toFixed(2);\n}\n\n\nmsg.topic = msg.input.queueUnitId;\n\nmsg.payload = floatValue\n\nreturn msg",
         "outputs": "1",
         "noerr": 0,
-        "x": 1091,
-        "y": 586,
+        "x": 475,
+        "y": 235,
         "wires": [
             [
-                "56d2b789.8c88d"
+                "56d2b789.8c88d",
+                "ac397aa6.7062c8"
             ]
         ]
     },
@@ -1203,10 +1150,10 @@
         "type": "ui_chart",
         "z": "d3f434eb.c97258",
         "name": "",
-        "group": "6aca3800.2dec38",
+        "group": "7b4beee9.c0112",
         "order": 1,
         "width": "8",
-        "height": "8",
+        "height": "4",
         "label": "Current",
         "chartType": "line",
         "legend": "false",
@@ -1216,7 +1163,7 @@
         "dot": false,
         "ymin": "0",
         "ymax": "",
-        "removeOlder": "2",
+        "removeOlder": "6",
         "removeOlderPoints": "",
         "removeOlderUnit": "3600",
         "cutout": 0,
@@ -1233,10 +1180,12 @@
             "#C5B0D5"
         ],
         "useOldStyle": false,
-        "x": 725,
-        "y": 397,
+        "x": 853,
+        "y": 146,
         "wires": [
-            [],
+            [
+                "ba13b96.469d0c8"
+            ],
             []
         ]
     },
@@ -1257,11 +1206,11 @@
         "checkall": "true",
         "repair": false,
         "outputs": 1,
-        "x": 576,
-        "y": 398,
+        "x": 227,
+        "y": 221,
         "wires": [
             [
-                "b30aa1df.ac0318"
+                "bc0b0327.199928"
             ]
         ]
     },
@@ -1282,11 +1231,11 @@
         "checkall": "true",
         "repair": false,
         "outputs": 1,
-        "x": 578.5,
-        "y": 455,
+        "x": 229.5,
+        "y": 278,
         "wires": [
             [
-                "ea725790.f36068"
+                "ca9f5986.a2dd38"
             ]
         ]
     },
@@ -1298,7 +1247,7 @@
         "group": "6aca3800.2dec38",
         "order": 2,
         "width": "8",
-        "height": "8",
+        "height": "4",
         "label": "Voltage",
         "chartType": "line",
         "legend": "false",
@@ -1308,7 +1257,7 @@
         "dot": false,
         "ymin": "200",
         "ymax": "260",
-        "removeOlder": "2",
+        "removeOlder": "24",
         "removeOlderPoints": "",
         "removeOlderUnit": "3600",
         "cutout": 0,
@@ -1325,10 +1274,12 @@
             "#C5B0D5"
         ],
         "useOldStyle": false,
-        "x": 780.5,
-        "y": 451,
+        "x": 865,
+        "y": 258,
         "wires": [
-            [],
+            [
+                "36262e25.34b11a"
+            ],
             []
         ]
     },
@@ -1337,34 +1288,9 @@
         "type": "subflow:d3f434eb.c97258",
         "z": "4f076291.cde374",
         "name": "",
-        "x": 1438.5,
-        "y": 584,
+        "x": 655,
+        "y": 235,
         "wires": []
-    },
-    {
-        "id": "ea725790.f36068",
-        "type": "switch",
-        "z": "d3f434eb.c97258",
-        "name": "Mains",
-        "property": "topic",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "150",
-                "vt": "num"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 1,
-        "x": 568,
-        "y": 499,
-        "wires": [
-            [
-                "d707218.6e11de"
-            ]
-        ]
     },
     {
         "id": "c3df9777.004df",
@@ -1445,7 +1371,7 @@
         "type": "function",
         "z": "5227fea8.7e7e3",
         "name": "cascadeDelay",
-        "func": "msg.payload = { \n    value: msg.payload\n};\nmsg.delay = 5;\nreturn msg;\n",
+        "func": "msg.payload = { \n    value: msg.payload\n};\nmsg.delay = 200;\nreturn msg;\n",
         "outputs": 1,
         "noerr": 0,
         "x": 617.5,
@@ -1462,7 +1388,7 @@
         "topic": "slow",
         "payload": "",
         "payloadType": "date",
-        "repeat": "10",
+        "repeat": "300",
         "crontab": "",
         "once": true,
         "onceDelay": "1",
@@ -1499,8 +1425,8 @@
         "type": "subflow:5227fea8.7e7e3",
         "z": "4f076291.cde374",
         "name": "",
-        "x": 150.5,
-        "y": 577,
+        "x": 100,
+        "y": 100,
         "wires": [
             [
                 "9029f1c7.9ded78"
@@ -1722,11 +1648,11 @@
         "type": "subflow:32ab51dd.a42ed6",
         "z": "4f076291.cde374",
         "name": "",
-        "x": 566.5,
-        "y": 593,
+        "x": 580,
+        "y": 120,
         "wires": [
             [
-                "d4be1113.dbca"
+                "6d0c3a0f.4c7eec"
             ]
         ]
     },
@@ -1859,7 +1785,8 @@
         "y": 283,
         "wires": [
             [
-                "afc2b57e.ead65"
+                "afc2b57e.ead65",
+                "8efd2187.bebb38"
             ]
         ]
     },
@@ -1868,7 +1795,7 @@
         "type": "function",
         "z": "c79d70c0.758f28",
         "name": "Insert Phase Info",
-        "func": "var phase = msg.payload\nmsg = {phaseSelect: phase}\nreturn msg;",
+        "func": "var phase = msg.payload\nvar name = msg.name\nmsg = {phaseSelect: phase, name: name}\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "x": 1075.5,
@@ -2076,9 +2003,9 @@
         "name": "",
         "label": "text",
         "format": "{{msg.payload}}",
-        "layout": "row-spread",
-        "x": 964.5,
-        "y": 590,
+        "layout": "col-center",
+        "x": 657.5,
+        "y": 650,
         "wires": []
     },
     {
@@ -2098,64 +2025,778 @@
         "checkall": "true",
         "repair": false,
         "outputs": 1,
-        "x": 623,
-        "y": 604,
+        "x": 232,
+        "y": 747,
         "wires": [
             [
-                "4d5456f4.3331d",
-                "c4f6fd48.d892e8"
+                "cc449c0f.6fcfa"
             ]
         ]
-    },
-    {
-        "id": "c4f6fd48.d892e8",
-        "type": "debug",
-        "z": "d3f434eb.c97258",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "x": 986.5,
-        "y": 687,
-        "wires": []
-    },
-    {
-        "id": "f18ff91a.62a038",
-        "type": "debug",
-        "z": "4f076291.cde374",
-        "name": "",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "input.payload.address",
-        "x": 1388.5,
-        "y": 656,
-        "wires": []
     },
     {
         "id": "3121ee1f.cd09ca",
         "type": "subflow:50abf9bc.962e5",
         "z": "4f076291.cde374",
         "name": "",
-        "x": 575.5,
-        "y": 556,
+        "x": 580,
+        "y": 80,
         "wires": [
             [
-                "d4be1113.dbca"
+                "6d0c3a0f.4c7eec"
             ]
         ]
     },
     {
-        "id": "bdfe4e66.a1a188",
+        "id": "810dffd8.c2315",
+        "type": "persist out",
+        "z": "d3f434eb.c97258",
+        "name": "voltgraph",
+        "storageNode": "52746128.09121",
+        "x": 705,
+        "y": 258,
+        "wires": [
+            [
+                "d707218.6e11de"
+            ]
+        ]
+    },
+    {
+        "id": "36262e25.34b11a",
+        "type": "persist in",
+        "z": "d3f434eb.c97258",
+        "name": "voltgraph",
+        "storageNode": "52746128.09121",
+        "x": 1045,
+        "y": 258,
+        "wires": []
+    },
+    {
+        "id": "3fc7bc8a.b23b34",
+        "type": "persist out",
+        "z": "d3f434eb.c97258",
+        "name": "currentgraph",
+        "storageNode": "52746128.09121",
+        "x": 683,
+        "y": 146,
+        "wires": [
+            [
+                "b30aa1df.ac0318"
+            ]
+        ]
+    },
+    {
+        "id": "ba13b96.469d0c8",
+        "type": "persist in",
+        "z": "d3f434eb.c97258",
+        "name": "currentgraph",
+        "storageNode": "52746128.09121",
+        "x": 1043,
+        "y": 146,
+        "wires": []
+    },
+    {
+        "id": "bc0b0327.199928",
         "type": "switch",
         "z": "d3f434eb.c97258",
-        "name": "topic",
+        "name": "Current",
         "property": "topic",
         "propertyType": "msg",
         "rules": [
+            {
+                "t": "btwn",
+                "v": "150",
+                "vt": "num",
+                "v2": "151",
+                "v2t": "num"
+            },
+            {
+                "t": "btwn",
+                "v": "152",
+                "vt": "num",
+                "v2": "159",
+                "v2t": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 417,
+        "y": 206,
+        "wires": [
+            [
+                "9ae85244.e6971"
+            ],
+            [
+                "b30aa1df.ac0318"
+            ]
+        ]
+    },
+    {
+        "id": "9ae85244.e6971",
+        "type": "ui_chart",
+        "z": "d3f434eb.c97258",
+        "name": "",
+        "group": "6aca3800.2dec38",
+        "order": 1,
+        "width": "8",
+        "height": "5",
+        "label": "Current",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "",
+        "removeOlder": "24",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1F77B4",
+            "#AEC7E8",
+            "#FF7F0E",
+            "#2CA02C",
+            "#98DF8A",
+            "#D62728",
+            "#FF9896",
+            "#9467BD",
+            "#C5B0D5"
+        ],
+        "useOldStyle": false,
+        "x": 853,
+        "y": 46,
+        "wires": [
+            [
+                "95d4a24.ebd5f6"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "413638e4.9996",
+        "type": "persist out",
+        "z": "d3f434eb.c97258",
+        "name": "currentgraphgeneration",
+        "storageNode": "52746128.09121",
+        "x": 643,
+        "y": 46,
+        "wires": [
+            [
+                "9ae85244.e6971"
+            ]
+        ]
+    },
+    {
+        "id": "95d4a24.ebd5f6",
+        "type": "persist in",
+        "z": "d3f434eb.c97258",
+        "name": "currentgraphgeneration",
+        "storageNode": "52746128.09121",
+        "x": 1143,
+        "y": 46,
+        "wires": []
+    },
+    {
+        "id": "6355cbbf.fde93c",
+        "type": "modbus-flex-getter",
+        "z": "b4a92fc9.23391",
+        "name": "",
+        "showStatusActivities": true,
+        "showErrors": false,
+        "server": "a9247b5b.e2b8",
+        "useIOFile": false,
+        "ioFile": "",
+        "useIOForPayload": false,
+        "x": 260,
+        "y": 200,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "6d0c3a0f.4c7eec",
+        "type": "subflow:b4a92fc9.23391",
+        "z": "4f076291.cde374",
+        "name": "",
+        "x": 265,
+        "y": 235,
+        "wires": [
+            [],
+            [
+                "b2ab1e6b.9c925"
+            ]
+        ]
+    },
+    {
+        "id": "6f37c635.6f5cb8",
+        "type": "modbus-queue-info",
+        "z": "b4a92fc9.23391",
+        "name": "Queue Info Read 150",
+        "topic": "",
+        "unitid": "150",
+        "lowLowLevel": "12",
+        "lowLevel": "15",
+        "highLevel": "25",
+        "highHighLevel": "30",
+        "server": "a9247b5b.e2b8",
+        "errorOnHighLevel": false,
+        "x": 260,
+        "y": 600,
+        "wires": [
+            [
+                "11ecc9d3.92e5de"
+            ]
+        ]
+    },
+    {
+        "id": "5f31a193.f1922",
+        "type": "modbus-queue-info",
+        "z": "b4a92fc9.23391",
+        "name": "Queue Info Write",
+        "topic": "",
+        "unitid": "255",
+        "lowLowLevel": 25,
+        "lowLevel": 75,
+        "highLevel": 150,
+        "highHighLevel": 300,
+        "server": "a9247b5b.e2b8",
+        "errorOnHighLevel": false,
+        "x": 262,
+        "y": 449,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "11ecc9d3.92e5de",
+        "type": "debug",
+        "z": "b4a92fc9.23391",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "x": 510,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "f4104f26.d6c4d8",
+        "type": "modbus-queue-info",
+        "z": "b4a92fc9.23391",
+        "name": "Queue Info Read 159",
+        "topic": "",
+        "unitid": "159",
+        "lowLowLevel": "12",
+        "lowLevel": "15",
+        "highLevel": "25",
+        "highHighLevel": "30",
+        "server": "a9247b5b.e2b8",
+        "errorOnHighLevel": false,
+        "x": 260,
+        "y": 960,
+        "wires": [
+            [
+                "11ecc9d3.92e5de"
+            ]
+        ]
+    },
+    {
+        "id": "46ff9607.5101b8",
+        "type": "catch",
+        "z": "b4a92fc9.23391",
+        "name": "",
+        "scope": null,
+        "x": 104,
+        "y": 43,
+        "wires": [
+            [
+                "90a1faa5.3ff738"
+            ]
+        ]
+    },
+    {
+        "id": "90a1faa5.3ff738",
+        "type": "debug",
+        "z": "b4a92fc9.23391",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "complete": "false",
+        "x": 274,
+        "y": 43,
+        "wires": []
+    },
+    {
+        "id": "7b3ab658.c33b9",
+        "type": "modbus-queue-info",
+        "z": "b4a92fc9.23391",
+        "name": "Queue Info Read 151",
+        "topic": "",
+        "unitid": "151",
+        "lowLowLevel": "12",
+        "lowLevel": "15",
+        "highLevel": "25",
+        "highHighLevel": "30",
+        "server": "a9247b5b.e2b8",
+        "errorOnHighLevel": false,
+        "x": 260,
+        "y": 640,
+        "wires": [
+            [
+                "11ecc9d3.92e5de"
+            ]
+        ]
+    },
+    {
+        "id": "ab9d6468.dde4b8",
+        "type": "modbus-queue-info",
+        "z": "b4a92fc9.23391",
+        "name": "Queue Info Read 152",
+        "topic": "",
+        "unitid": "152",
+        "lowLowLevel": "12",
+        "lowLevel": "15",
+        "highLevel": "25",
+        "highHighLevel": "30",
+        "server": "a9247b5b.e2b8",
+        "errorOnHighLevel": false,
+        "x": 260,
+        "y": 680,
+        "wires": [
+            [
+                "11ecc9d3.92e5de"
+            ]
+        ]
+    },
+    {
+        "id": "9d51cbaf.7ea968",
+        "type": "modbus-queue-info",
+        "z": "b4a92fc9.23391",
+        "name": "Queue Info Read 153",
+        "topic": "",
+        "unitid": "153",
+        "lowLowLevel": "12",
+        "lowLevel": "15",
+        "highLevel": "25",
+        "highHighLevel": "30",
+        "server": "a9247b5b.e2b8",
+        "errorOnHighLevel": false,
+        "x": 260,
+        "y": 720,
+        "wires": [
+            [
+                "11ecc9d3.92e5de"
+            ]
+        ]
+    },
+    {
+        "id": "74331883.504198",
+        "type": "modbus-queue-info",
+        "z": "b4a92fc9.23391",
+        "name": "Queue Info Read 154",
+        "topic": "",
+        "unitid": "154",
+        "lowLowLevel": "12",
+        "lowLevel": "15",
+        "highLevel": "25",
+        "highHighLevel": "30",
+        "server": "a9247b5b.e2b8",
+        "errorOnHighLevel": false,
+        "x": 260,
+        "y": 760,
+        "wires": [
+            [
+                "11ecc9d3.92e5de"
+            ]
+        ]
+    },
+    {
+        "id": "da49bc0a.a524f8",
+        "type": "modbus-queue-info",
+        "z": "b4a92fc9.23391",
+        "name": "Queue Info Read 155",
+        "topic": "",
+        "unitid": "155",
+        "lowLowLevel": "12",
+        "lowLevel": "15",
+        "highLevel": "25",
+        "highHighLevel": "30",
+        "server": "a9247b5b.e2b8",
+        "errorOnHighLevel": false,
+        "x": 260,
+        "y": 800,
+        "wires": [
+            [
+                "11ecc9d3.92e5de"
+            ]
+        ]
+    },
+    {
+        "id": "da2546fa.abf92",
+        "type": "modbus-queue-info",
+        "z": "b4a92fc9.23391",
+        "name": "Queue Info Read 156",
+        "topic": "",
+        "unitid": "156",
+        "lowLowLevel": "12",
+        "lowLevel": "15",
+        "highLevel": "25",
+        "highHighLevel": "30",
+        "server": "a9247b5b.e2b8",
+        "errorOnHighLevel": false,
+        "x": 260,
+        "y": 840,
+        "wires": [
+            [
+                "11ecc9d3.92e5de"
+            ]
+        ]
+    },
+    {
+        "id": "5afa203.b9d46e",
+        "type": "modbus-queue-info",
+        "z": "b4a92fc9.23391",
+        "name": "Queue Info Read 157",
+        "topic": "",
+        "unitid": "157",
+        "lowLowLevel": "15",
+        "lowLevel": "15",
+        "highLevel": "25",
+        "highHighLevel": "30",
+        "server": "a9247b5b.e2b8",
+        "errorOnHighLevel": false,
+        "x": 260,
+        "y": 880,
+        "wires": [
+            [
+                "11ecc9d3.92e5de"
+            ]
+        ]
+    },
+    {
+        "id": "a9484dfe.465da8",
+        "type": "modbus-queue-info",
+        "z": "b4a92fc9.23391",
+        "name": "Queue Info Read 158",
+        "topic": "",
+        "unitid": "158",
+        "lowLowLevel": "12",
+        "lowLevel": "15",
+        "highLevel": "25",
+        "highHighLevel": "30",
+        "server": "a9247b5b.e2b8",
+        "errorOnHighLevel": false,
+        "x": 260,
+        "y": 920,
+        "wires": [
+            [
+                "11ecc9d3.92e5de"
+            ]
+        ]
+    },
+    {
+        "id": "54625071.981a5",
+        "type": "modbus-queue-info",
+        "z": "4f076291.cde374",
+        "name": "Queue Info Read 150",
+        "topic": "",
+        "unitid": "150",
+        "lowLowLevel": "12",
+        "lowLevel": "15",
+        "highLevel": "25",
+        "highHighLevel": "30",
+        "server": "a9247b5b.e2b8",
+        "errorOnHighLevel": false,
+        "x": 524,
+        "y": 373,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ca9f5986.a2dd38",
+        "type": "switch",
+        "z": "d3f434eb.c97258",
+        "name": "Mains only",
+        "property": "topic",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "150",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "159",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 436.5,
+        "y": 285,
+        "wires": [
+            [
+                "d707218.6e11de"
+            ],
+            [
+                "806bd52c.afe1f8"
+            ]
+        ]
+    },
+    {
+        "id": "3cf51133.6d423e",
+        "type": "switch",
+        "z": "d3f434eb.c97258",
+        "name": "Power",
+        "property": "ptTopic",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "activePower",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 217,
+        "y": 337,
+        "wires": [
+            [
+                "ad61fddc.1b0418"
+            ]
+        ]
+    },
+    {
+        "id": "ad61fddc.1b0418",
+        "type": "switch",
+        "z": "d3f434eb.c97258",
+        "name": "exclude mains",
+        "property": "topic",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "btwn",
+                "v": "152",
+                "vt": "num",
+                "v2": "158",
+                "v2t": "num"
+            },
+            {
+                "t": "eq",
+                "v": "157",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 441,
+        "y": 339,
+        "wires": [
+            [
+                "771733c1.43f0ac"
+            ],
+            [
+                "4bce9c40.92ba9c"
+            ]
+        ]
+    },
+    {
+        "id": "771733c1.43f0ac",
+        "type": "ui_chart",
+        "z": "d3f434eb.c97258",
+        "name": "",
+        "group": "7b4beee9.c0112",
+        "order": 2,
+        "width": "8",
+        "height": "6",
+        "label": "Power",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "",
+        "removeOlder": "24",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1F77B4",
+            "#AEC7E8",
+            "#FF7F0E",
+            "#2CA02C",
+            "#98DF8A",
+            "#D62728",
+            "#FF9896",
+            "#9467BD",
+            "#C5B0D5"
+        ],
+        "useOldStyle": false,
+        "x": 855,
+        "y": 336,
+        "wires": [
+            [
+                "be485c9c.011078"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "16b63ec6.61d631",
+        "type": "persist out",
+        "z": "d3f434eb.c97258",
+        "name": "powergraph",
+        "storageNode": "52746128.09121",
+        "x": 712,
+        "y": 337,
+        "wires": [
+            [
+                "771733c1.43f0ac"
+            ]
+        ]
+    },
+    {
+        "id": "be485c9c.011078",
+        "type": "persist in",
+        "z": "d3f434eb.c97258",
+        "name": "powergraph",
+        "storageNode": "52746128.09121",
+        "x": 1055,
+        "y": 336,
+        "wires": []
+    },
+    {
+        "id": "4bce9c40.92ba9c",
+        "type": "ui_gauge",
+        "z": "d3f434eb.c97258",
+        "name": "",
+        "group": "3eec941a.629fb4",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "{{msg.payload.name}}",
+        "label": "watts",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "2400",
+        "colors": [
+            "#00B500",
+            "#E6E600",
+            "#CA3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 853.5,
+        "y": 454,
+        "wires": []
+    },
+    {
+        "id": "806bd52c.afe1f8",
+        "type": "ui_chart",
+        "z": "d3f434eb.c97258",
+        "name": "",
+        "group": "6aca3800.2dec38",
+        "order": 2,
+        "width": "8",
+        "height": "4",
+        "label": "Controlled Water",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "bezier",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "260",
+        "removeOlder": "24",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1F77B4",
+            "#AEC7E8",
+            "#FF7F0E",
+            "#2CA02C",
+            "#98DF8A",
+            "#D62728",
+            "#FF9896",
+            "#9467BD",
+            "#C5B0D5"
+        ],
+        "useOldStyle": false,
+        "x": 897,
+        "y": 293,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "cc449c0f.6fcfa",
+        "type": "switch",
+        "z": "d3f434eb.c97258",
+        "name": "Split CCT's",
+        "property": "topic",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "150",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "151",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "152",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "153",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "154",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "155",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "156",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "157",
+                "vt": "num"
+            },
             {
                 "t": "eq",
                 "v": "158",
@@ -2164,13 +2805,178 @@
         ],
         "checkall": "true",
         "repair": false,
-        "outputs": 1,
-        "x": 490,
-        "y": 604,
+        "outputs": 9,
+        "x": 429,
+        "y": 759,
         "wires": [
             [
-                "ad51ee5d.6bbfc"
+                "4d5456f4.3331d"
+            ],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "59350982.5b30e",
+        "type": "ui_text_input",
+        "z": "c79d70c0.758f28",
+        "name": "",
+        "label": "",
+        "group": "915293c9.b29d28",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "text",
+        "delay": 300,
+        "topic": "",
+        "x": 721.5,
+        "y": 442,
+        "wires": [
+            [
+                "4947124e.ac1ad4"
             ]
         ]
+    },
+    {
+        "id": "1fa21ea2.7bced9",
+        "type": "change",
+        "z": "c79d70c0.758f28",
+        "name": "",
+        "rules": [
+            {
+                "t": "move",
+                "p": "payload",
+                "pt": "msg",
+                "to": "name",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1049.5,
+        "y": 426,
+        "wires": [
+            [
+                "27b2e5c4.c3bbc2"
+            ]
+        ]
+    },
+    {
+        "id": "8efd2187.bebb38",
+        "type": "rbe",
+        "z": "c79d70c0.758f28",
+        "name": "",
+        "func": "rbe",
+        "gap": "",
+        "start": "",
+        "inout": "out",
+        "property": "topic",
+        "x": 364.5,
+        "y": 439,
+        "wires": [
+            [
+                "7f8647e9.7a4b9"
+            ]
+        ]
+    },
+    {
+        "id": "b7725f9a.7a1de8",
+        "type": "debug",
+        "z": "bba877fb.9b0b",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "name",
+        "x": 975.5,
+        "y": 196,
+        "wires": []
+    },
+    {
+        "id": "7f8647e9.7a4b9",
+        "type": "key-value-read",
+        "z": "c79d70c0.758f28",
+        "store": "2df49364.c1745c",
+        "key": "(msg.topic)name",
+        "name": "",
+        "x": 555,
+        "y": 439,
+        "wires": [
+            [
+                "59350982.5b30e"
+            ]
+        ]
+    },
+    {
+        "id": "4947124e.ac1ad4",
+        "type": "key-value-write",
+        "z": "c79d70c0.758f28",
+        "store": "2df49364.c1745c",
+        "action": "set",
+        "key": "(msg.topic)name",
+        "keyvalue": "",
+        "name": "",
+        "x": 870,
+        "y": 435,
+        "wires": [
+            [
+                "1fa21ea2.7bced9"
+            ]
+        ]
+    },
+    {
+        "id": "9243bbf.9d1eec8",
+        "type": "mqtt out",
+        "z": "4f076291.cde374",
+        "name": "",
+        "topic": "",
+        "qos": "0",
+        "retain": "",
+        "broker": "b8ea1246.8152d8",
+        "x": 937,
+        "y": 246,
+        "wires": []
+    },
+    {
+        "id": "ac397aa6.7062c8",
+        "type": "function",
+        "z": "4f076291.cde374",
+        "name": "",
+        "func": "\nmsg.topic = \"powerTag/\" + msg.topic + \"/\" + msg.ptTopic;\n\nnode.status({fill:\"blue\",shape:\"ring\",text:msg.topic + \":\" + msg.payload});    \n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 656,
+        "y": 281,
+        "wires": [
+            [
+                "9243bbf.9d1eec8",
+                "d1f4633a.4292d8"
+            ]
+        ]
+    },
+    {
+        "id": "d1f4633a.4292d8",
+        "type": "debug",
+        "z": "4f076291.cde374",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "topic",
+        "x": 856.5,
+        "y": 354,
+        "wires": []
     }
 ]

@@ -1,0 +1,12 @@
+{
+    "name": "powerTag",
+    "description": "A user interface for the Schneider PowerTag product",
+    "version": "0.0.1",
+    "dependencies": {},
+    "node-red": {
+        "settings": {
+            "flowFile": "flows_dorieth.json",
+            "credentialsFile": "flows_dorieth_cred.json"
+        }
+    }
+}

@@ -1,8 +1,7 @@
-# powerTag
+powerTag
+=========
  Node-red interface for Schneider Powertag products. This Git uses Node-Red Projects.
- powerTag
- ========
-
+ 
  **Description**
  A user interface for the Schneider PowerTag product
 

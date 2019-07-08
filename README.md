@@ -25,7 +25,8 @@ powerTag
  - Mapping has only been done for sensors at present - there is more information available from the gateway as described in Schneider Electric document DOCA0115EN-03
 
  - The Three Phase modbus map is the master, the single phase map needs updating. 
- - Templates could be used better in this flow. I'm new to node-red.
- - The Node-red UI is not intened as the end user UI.
- - The end goal is to have the information available via MQTT, to MySQL or to HomeAssistant.
+ - Templates could be used better in this flow. I'm new to Node-red.
+ - The Node-red UI is not intened as the end user UI at present.
+ - The end goal is to have the information available via MQTT, to MySQL or to HomeAssistant. Possibly move to industrial systems/SCADA in future.
  - This is my first Github project. If you have constructive comments or advice on better ways to manage or do things, I'm all ears.
+ - The current configuration is spreadh throughtout all of the flows. It also only uses 10 circuits at present. The next focus area is to be able to load a "configuration" into the fornt end and have the program adapt to the config. This would allow easier implementation in different or new environments.

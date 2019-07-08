@@ -29,4 +29,4 @@ powerTag
  - The Node-red UI is not intened as the end user UI at present.
  - The end goal is to have the information available via MQTT, to MySQL or to HomeAssistant. Possibly move to industrial systems/SCADA in future.
  - This is my first Github project. If you have constructive comments or advice on better ways to manage or do things, I'm all ears.
- - The current configuration is spreadh throughtout all of the flows. It also only uses 10 circuits at present. The next focus area is to be able to load a "configuration" into the fornt end and have the program adapt to the config. This would allow easier implementation in different or new environments.
+ - The current configuration is spread throughout all of the flows. It also only uses 10 circuits at present. The next focus area is to be able to load a "configuration" into the front end and have the program adapt to the config. This would allow easier implementation in different or new environments.

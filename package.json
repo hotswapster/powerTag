@@ -2,7 +2,15 @@
     "name": "powerTag",
     "description": "A user interface for the Schneider PowerTag product",
     "version": "0.0.1",
-    "dependencies": {},
+    "dependencies": {
+        "node-red-contrib-moment": "3.0.3",
+        "node-red-dashboard": "2.15.5",
+        "node-red-node-random": "0.1.3",
+        "node-red-node-rbe": "0.2.4",
+        "node-red-contrib-key-value-store": "0.1.8",
+        "node-red-node-emoncms": "0.2.1",
+        "node-red-node-mysql": "0.0.18"
+    },
     "node-red": {
         "settings": {
             "flowFile": "flows_dorieth.json",
